@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>分组</title>
+    <desc>Created with Sketch.</desc>
+    <g id="系统配置" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="数据保护策略-存储设置编辑" transform="translate(-816.000000, -470.000000)" stroke="#3792EA">
+            <g id="Group-7-Copy" transform="translate(796.000000, 463.000000)">
+                <g id="编组-2" transform="translate(21.000000, 7.000000)">
+                    <g id="分组" transform="translate(0.000000, 1.000000)">
+                        <polyline id="Stroke-1" points="10.2025846 5.84455385 10.2025846 10.2022462 0.422738462 10.2022462 0.422738462 0.423246154 4.16950769 0.423246154"></polyline>
+                        <polyline id="Stroke-3" points="4.16959231 3.02271538 4.16959231 6.44286923 7.58974615 6.44286923"></polyline>
+                        <path d="M4.16959231,6.44286923 L9.59851538,1.01394615" id="Stroke-4"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
