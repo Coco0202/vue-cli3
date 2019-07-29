@@ -75,7 +75,7 @@ const permission = {
   actions: {
     generateRoutes({ commit }, roles) {
       if(typeof roles === 'string') {
-        roles = roles.split();
+        roles = roles.split()
       }
       return new Promise(resolve => {
         let accessedRoutes

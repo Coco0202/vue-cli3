@@ -2,7 +2,5 @@
   <section>我是日志管理</section>
 </template>
 <script>
-export default {
-  
-}
+export default {}
 </script>
