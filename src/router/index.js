@@ -16,8 +16,9 @@ export const asyncRoutes = [{
     component: () => import('@/views/dashboard/index'),
     meta: {
       title: '控制台',
-      hidden: false,
+      show: true,
       token: true,
+      icon: 'md-compass',
       version: ['ATD', 'NTA'],
       roles: ['systemAdmin', 'admin']
     }
@@ -27,22 +28,105 @@ export const asyncRoutes = [{
     component: () => import('@/views/system/index'),
     meta: {
       title: '系统配置',
-      hidden: false,
+      show: true,
       token: true,
+      icon: 'ios-navigate',
       version: ['ATD', 'NTA'],
       roles: ['systemAdmin', 'admin']
     }
   }, {
+    path: '/account',
+    component: () => import('@/views/account/index'),
+    meta: {
+      title: '账号管理',
+      show: true,
+      token: true,
+      icon: 'ios-navigate',
+      version: ['ATD', 'NTA'],
+      roles: ['systemAdmin', 'admin']
+    },
+    children: [{
+      path: 'user1',
+      name: 'user1',
+      component: () => import('@/views/account/user1/index'),
+      meta: {
+        title: '用户管理1',
+        show: true,
+        token: true,
+        version: ['ATD', 'NTA'],
+        roles: ['systemAdmin', 'admin']
+      }
+    }, {
+      path: 'user2',
+      name: 'user2',
+      component: () => import('@/views/account/user2/index'),
+      meta: {
+        title: '用户管理2',
+        show: true,
+        token: true,
+        version: ['ATD', 'NTA'],
+        roles: ['systemAdmin', 'admin']
+      }
+    }]
+  }, {
     path: '/log',
-    name: 'log',
+    redirect: '/log/log1',
     component: () => import('@/views/log/index'),
     meta: {
-      title: '日志管理',
-      hidden: false,
+      title: '系统日志',
+      show: true,
       token: true,
+      icon: 'md-compass',
       version: ['ATD', 'NTA'],
       roles: ['systemAdmin']
-    }
+    },
+    children: [{
+      path: 'log1',
+      name: 'log1',
+      component: () => import('@/views/log/log1/index'),
+      meta: {
+        title: '系统日志1',
+        show: true,
+        token: true,
+        version: ['ATD', 'NTA'],
+        roles: ['systemAdmin']
+      }
+    }, {
+      path: 'log2',
+      name: 'log2',
+      component: () => import('@/views/log/log2/index'),
+      meta: {
+        title: '系统日志2',
+        show: true,
+        token: true,
+        version: ['ATD', 'NTA'],
+        roles: ['systemAdmin']
+      }
+    }]
+  }, {
+    path: '/table',
+    redirect: '/table/basicTable',
+    component: () => import('@/views/table/index'),
+    meta: {
+      title: '表格',
+      show: true,
+      token: true,
+      icon: 'md-compass',
+      version: ['ATD', 'NTA'],
+      roles: ['systemAdmin']
+    },
+    children: [{
+      path: 'basicTable',
+      name: 'basicTable',
+      component: () => import('@/views/table/basicTable/BasicTable.vue'),
+      meta: {
+        title: '基础表格',
+        show: true,
+        token: true,
+        version: ['ATD', 'NTA'],
+        roles: ['systemAdmin']
+      }
+    }]
   }]
 }]
 
@@ -51,19 +135,23 @@ export const constantRoutes = [{
   path: '/user',
   component: BlankLayout,
   redirect: '/user/login',
+  meta: {
+    show: false,
+    token: false
+  },
   children: [{
     path: 'login',
     name: 'login',
     component: () => import('@/views/user/Login.vue'),
     meta: {
-      hidden: true,
+      show: false,
       token: false
     }
   }]
 }]
 // 默认路由是没加权限的路由
 const createRouter = () => new Router({
-  mode: 'history',
+  // mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })

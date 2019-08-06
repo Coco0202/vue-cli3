@@ -5,7 +5,6 @@ import store from './store'
 import api from './api' // 导入api接口
 import './plugins/iview-vue/index.js' // 按需引入iview组件
 import './style/reset.css'
-import '../my-theme/index.less'
 import './icons/index' // icon
 import { Message } from 'iview'
 

@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     iconName () {
-      return `#icon-${this.iconClass}`
+      return `#${this.iconClass}`
     },
     svgClass () {
       if (this.className) {
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .svg-icon {
   width: 1em;
   height: 1em;

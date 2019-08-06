@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { asyncRoutes, constantRoutes } from '@/router'
 
 /**
@@ -78,8 +79,7 @@ const permission = {
         roles = roles.split()
       }
       return new Promise(resolve => {
-        let accessedRoutes
-        accessedRoutes = filterAsyncRoutes (asyncRoutes, roles)
+        let accessedRoutes = filterAsyncRoutes (asyncRoutes, roles)
         commit('SET_ROUTES', accessedRoutes)
         resolve(accessedRoutes)
       })

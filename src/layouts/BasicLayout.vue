@@ -1,21 +1,24 @@
 <template lang="html">
-  <div class="layout">
+  <div class="v-layout">
     <Layout>
       <!-- 左侧菜单 start -->
-      <Sider class="slide-menu" collapsible :collapsed-width="78" v-model="isCollapsed">
-        <SlideMenu :isCollapsed="isCollapsed" />
+      <Sider class="slide-menu" collapsible :collapsed-width="50" v-model="isCollapsed">
+        <SlideMenu v-show="!isCollapsed" :isCollapsed="isCollapsed" :collapsed-width="50" />
+        <SlideMenuShrink v-show="isCollapsed" :isCollapsed="isCollapsed" :collapsed-width="50"></SlideMenuShrink>
       </Sider>
       <!-- 左侧菜单 end -->
-      <!-- header start -->
-      <Header class="header"></Header>
-      <!-- header end -->
       <Layout>
         <!-- main start -->
-        <Content class="main">
-          <div class="content">
-            <transition name="page-transition">
-              <router-view />
-            </transition>
+        <Content class="v-layout-main" :class="{'v-layout-collapsed': isCollapsed}">
+          <!-- header start -->
+          <Header class="v-layout-header"></Header>
+          <!-- header end -->
+          <div class="v-layout-content">
+            <div class="v-layout-main-content">
+              <transition name="page-transition">
+                <router-view />
+              </transition>
+            </div>
           </div>
         </Content>
         <!-- main start -->
@@ -25,10 +28,12 @@
 </template>
 <script>
 import SlideMenu from '@/components/Menu/SlideMenu'
+import SlideMenuShrink from '@/components/Menu/SlideMenuShrink.vue'
 export default {
   name: 'BasicLayout',
   components: {
-    SlideMenu
+    SlideMenu,
+    SlideMenuShrink
   },
   data () {
     return {
@@ -38,55 +43,32 @@ export default {
 }
 </script>
 <style scope lang="less">
-.layout-con{
+.slide-menu.ivu-layout-sider {
+  position: fixed;
+  z-index: 4;
   height: 100%;
-  width: 100%;
 }
-.header {
+.v-layout-header {
   width: 100%;
   height: 50px;
   position: fixed;
   background: #fff;
   box-shadow: 0 2px 3px 2px rgba(0,0,0,.1);
 }
-.main {
-  padding: 60px 10px 10px;
-  .content {
-    height: calc(100% - 60px);
+.v-layout-main {
+  background-color: #f3f5f7;
+  padding-left: 200px;
+  transition: all 0.2s ease-in-out;
+  .v-layout-content {
+    box-sizing: border-box;
+    padding: 85px 20px 20px;
+    min-height: ~"calc(100vh - 0px)";
   }
 }
-.slide-menu.ivu-layout-sider {
-  position: fixed;
-  z-index: 2;
-  height: 100%;
+.v-layout-collapsed {
+  padding-left: 50px;
 }
-.menu-item {
-  span{
-    display: inline-block;
-    overflow: hidden;
-    width: 69px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    vertical-align: bottom;
-    transition: width .2s ease .2s;
-  }
-  i{
-    transform: translateX(0px);
-    transition: font-size .2s ease, transform .2s ease;
-    vertical-align: middle;
-    font-size: 16px;
-  }
-}
-.collapsed-menu {
-  span {
-    width: 0px;
-    transition: width .2s ease;
-  }
-  i {
-    transform: translateX(5px);
-    transition: font-size .2s ease .2s, transform .2s ease .2s;
-    vertical-align: middle;
-    font-size: 22px;
-  }
+.v-layout-main-content {
+  background-color: #FFF;
 }
 </style>
