@@ -1,5 +1,5 @@
 <template lang="html">
-  <Table border draggable :columns="columns1" :data="data1"></Table>
+  <Table border draggable no-data-text="暂无数据" :columns="columns1" :data="data1"></Table>
 </template>
 <script>
 export default {

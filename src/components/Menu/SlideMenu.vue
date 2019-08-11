@@ -7,8 +7,12 @@
         <template v-if="menuItem.children">
          <Submenu v-if="menuItem.meta.show" :name="menuItem.path" :key="menuItem.path">
             <template slot="title">
-               <Icon :type="menuItem.meta.icon" />
-              {{menuItem.meta.title}}
+              <span class="i-layout-menu-side-title-icon">
+                <Icon :size="20" :type="menuItem.meta.icon" />
+              </span>
+              <span class="i-layout-menu-side-title-text">
+                {{menuItem.meta.title}}
+              </span>
             </template>
             <MenuItem v-for="itemChild in menuItem.children" :name="`${menuItem.path}/${itemChild.path}`" :key="`${menuItem.path}/${itemChild.path}`" :to="`${menuItem.path}/${itemChild.path}`">
               {{itemChild.meta.title}}
@@ -18,8 +22,12 @@
 
         <template v-else>
           <MenuItem :name="menuItem.path" :key="menuItem.path" :to="menuItem.path">
-            <Icon :type="menuItem.meta.icon" />
-            {{menuItem.meta.title}}
+            <span class="i-layout-menu-side-title-icon">
+              <Icon :size="20" :type="menuItem.meta.icon" />
+            </span>
+            <span class="i-layout-menu-side-title-text">
+              {{menuItem.meta.title}}
+            </span>
           </MenuItem>
         </template>
 
@@ -71,36 +79,44 @@ export default {
 .menu-icon{
   transition: all .3s;
 }
-.rotate-icon{
-  transform: rotate(-90deg);
-}
-.menu-item {
-  span {
+.i-layout-menu-side-title-icon {
     display: inline-block;
+    width: 24px;
+    height: 26px;
+    line-height: 21px;
+    vertical-align: middle;
+    text-align: center;
+    margin-right: 8px;
+    i {
+      margin-right: 0!important;
+    }
+}
+.ivu-menu-vertical {
+  .ivu-menu-item, .ivu-menu-submenu {
+    text-align: left;
     overflow: hidden;
-    width: 69px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    vertical-align: bottom;
-    transition: width .2s ease .2s;
-    i {
-      transform: translateX(0px);
-      transition: font-size .2s ease, transform .2s ease;
-      vertical-align: middle;
-      font-size: 16px;
-    }
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    transition: all .2s ease-in-out;
   }
-}
-.collapsed-menu {
-  span {
-    width: 0px;
-    transition: width .2s ease;
-    i {
-      transform: translateX(5px);
-      transition: font-size .2s ease .2s, transform .2s ease .2s;
-      vertical-align: middle;
-      font-size: 22px;
-    }
+  .ivu-menu-item {
+    height: 52px;
+    line-height: 52px;
+    padding: 0 15px;
+  }
+  /deep/.ivu-menu-submenu-title {
+    height: 52px;
+    line-height: 52px;
+    padding: 0px 15px!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /deep/.ivu-menu-submenu-title-icon {
+    right: 10px;
   }
 }
 </style>

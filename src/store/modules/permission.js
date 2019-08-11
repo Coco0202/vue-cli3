@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { asyncRoutes, constantRoutes } from '@/router'
 
 /**
@@ -36,7 +35,7 @@ export function filterAsyncRoutes (routes, roles) {
   const res = []
   routes.forEach (route => {
     const tmp = { ...route }
-    if ( hasPermission (roles, tmp) ) {
+    if (hasPermission (roles, tmp)) {
       if (tmp.children) {
         tmp.children = filterAsyncRoutes (tmp.children, roles)
       }
@@ -49,20 +48,20 @@ export function filterAsyncRoutes (routes, roles) {
 const permission = {
   namespaced: true,
   state: {
-    roles: '',  // 当前登录用户的角色
+    roles: '', // 当前登录用户的角色
     routes: [], // 生成的菜单
     addRoutes: [] // 根据权限生成的路由
   },
   getters: {
     roles: state => state.roles,
     addRoutes: state => state.addRoutes,
-    permission_routes: state => state.routes,
+    permission_routes: state => state.routes
   },
   mutations: {
     SET_ROLE: (state, roles) => {
-      if(typeof roles === 'string') {
+      if (typeof roles === 'string') {
         state.roles = roles.split()
-      }else {
+      } else {
         state.roles = roles
       }
     },

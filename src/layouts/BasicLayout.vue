@@ -2,7 +2,7 @@
   <div class="v-layout">
     <Layout>
       <!-- 左侧菜单 start -->
-      <Sider class="slide-menu" collapsible :collapsed-width="50" v-model="isCollapsed">
+      <Sider class="slide-menu" width="150" collapsible :collapsed-width="50" v-model="isCollapsed">
         <SlideMenu v-show="!isCollapsed" :isCollapsed="isCollapsed" :collapsed-width="50" />
         <SlideMenuShrink v-show="isCollapsed" :isCollapsed="isCollapsed" :collapsed-width="50"></SlideMenuShrink>
       </Sider>
@@ -57,7 +57,7 @@ export default {
 }
 .v-layout-main {
   background-color: #f3f5f7;
-  padding-left: 200px;
+  padding-left: 150px;
   transition: all 0.2s ease-in-out;
   .v-layout-content {
     box-sizing: border-box;

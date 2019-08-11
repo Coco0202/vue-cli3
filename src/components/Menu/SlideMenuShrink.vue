@@ -3,7 +3,7 @@
   <template v-for="menuItem in permission_routes">
     <template v-if="menuItem.meta.show">
       <div style="text-align: center;" :key="menuItem.path">
-        <Dropdown transfer v-if="menuItem.children" placement="right-start" :key="menuItem.path" @on-click="changeMenu" transfer-class-name="menu-dropdown">
+        <Dropdown v-if="menuItem.children" transfer placement="right-start" :key="menuItem.path" @on-click="changeMenu" transfer-class-name="menu-dropdown">
           <Button type="text">
             <Icon :size="20" :color="iconColor" :type="menuItem.meta.icon"></Icon>
           </Button>
@@ -17,7 +17,7 @@
             </template>
           </DropdownMenu>
         </Dropdown>
-        <Dropdown transfer v-else placement="right-start" :key="menuItem.name" @on-click="changeMenu" transfer-class-name="menu-dropdown">
+        <Dropdown v-else transfer placement="right-start" :key="menuItem.name" @on-click="changeMenu" transfer-class-name="menu-dropdown">
           <Button @click="changeMenu(menuItem.name)" type="text">
             <Icon :size="20" :color="iconColor" :type="menuItem.meta.icon"></Icon>
           </Button>
@@ -53,6 +53,11 @@ export default {
       default: 'darck'
     }
   },
+  data () {
+    return {
+      activeName: ''
+    }
+  },
   computed: {
     ...mapGetters('permission', ['permission_routes'])
   },
@@ -69,12 +74,12 @@ export default {
 }
 .ivu-dropdown {
   width: 100%;
-  height: 50px;
-  line-height: 50px;
+  height: 52px;
+  line-height: 52px;
   overflow: hidden;
   .ivu-btn-text {
     width: 100%;
-    height: 50px;
+    height: 52px;
     border-radius: 0;
     &:hover, &.active {
       background-color: #0a2241;
@@ -87,6 +92,15 @@ export default {
 }
 .i-layout-menu-side.ivu-menu-dark {
   .ivu-menu-item-active {
+    color: #FFF;
+  }
+}
+.ivu-select-dropdown{
+  background-color: #515a6e;
+}
+.ivu-dropdown-item-selected, .ivu-dropdown-item.ivu-dropdown-item-selected:hover {
+  background-color: #0a2241;
+  a {
     color: #FFF;
   }
 }

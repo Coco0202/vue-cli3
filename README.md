@@ -7,22 +7,37 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
+yarn serve
 ```
 
 ### Run your tests
 ```
-yarn run test
+yarn serve:test
 ```
 
-### Lints and fixes files
+### Run your ATD版本
 ```
-yarn run lint
+yarn serve:ATD
+```
+
+### Run your mock
+```
+yarn serve:mock
+```
+
+### Run your 体积分析
+```
+yarn serve:analyz
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Compiles and minifies for production:ATD
+```
+yarn build:ATD
 ```
 
 ### Customize configuration
