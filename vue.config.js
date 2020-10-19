@@ -14,7 +14,7 @@ module.exports = {
   // 代理
   devServer: {
     proxy: {
-      '/prs-rebirth': {
+      '/api': {
         target: "https://10.0.81.23",
         pathRewrite: {},
         // 是否跨域

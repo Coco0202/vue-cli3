@@ -6,18 +6,10 @@ import { asyncRoutes, constantRoutes } from '@/router'
  * @param route
  */
 function hasPermission (roles, route) {
-  const prsVersion = process.env.VUE_APP_VERSION === 'ATD' ? ['ATD'] : ['NTA']
   if (route.meta) {
-    // 先通过版本过滤
-    if (route.meta.version) {
-      if (prsVersion.some(v => route.meta.version.includes(v))) {
-        // 然后通过角色过滤
-        if (route.meta.roles) {
-          return roles.some(role => route.meta.roles.includes(role))
-        } else {
-          return true
-        }
-      }
+    // 然后通过角色过滤
+    if (route.meta.roles) {
+      return roles.some(role => route.meta.roles.includes(role))
     } else {
       return true
     }
